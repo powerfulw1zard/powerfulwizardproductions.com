@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="preload" href="injured-wizard.png" as="image">
 </head>
 <body>
     <header class="hero">
@@ -43,5 +44,25 @@
             <p>✨ Powered by Ancient Magic and Modern Technology ✨</p>
         </div>
     </footer>
+
+    <script>
+        // Optimize image loading
+        document.addEventListener('DOMContentLoaded', function() {
+            const hero = document.querySelector('.hero');
+            const img = new Image();
+            
+            img.onload = function() {
+                hero.classList.add('loaded');
+            };
+            
+            img.onerror = function() {
+                // Fallback if image fails to load
+                hero.classList.add('loaded');
+            };
+            
+            // Start loading the image
+            img.src = 'injured-wizard.png';
+        });
+    </script>
 </body>
 </html>
